@@ -1,13 +1,11 @@
-let degree = prompt("Enter the name of your degree: ");
-let score = prompt("How many points did you score in the academic year 2023/24? ");
+const sliderEl = document.querySelector("#range")
+const sliderValue = document.querySelector(".value")
 
-if (degree === "Physics" && score >= 200 && score <= 249) {
-// If score is in the range of 200 to 249, then the discount is 25%.
-    console.log("25%");
-} else if (degree === "Physics" && score >= 250) {
-// If score is above 250, then the discount is 50%.
-    console.log("50%");
-} else {
-// If the score is below 200, then there is no discount.
-    console.log("No discount");
-}
+sliderEl.addEventListener("input", (event) => { const tempSliderValue = event.target.value; 
+
+sliderValue.textContent = tempSliderValue;
+
+const bar = (tempSliderValue / sliderEl.max) * 100;
+
+sliderEl.style.background = `linear-gradient(to right, #9383ff ${bar}%, #b4b4b4 ${bar}%)`;
+})
